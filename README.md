@@ -242,26 +242,26 @@ Hands-on practice quest #01: pre-built disk image lifecycle (15+5)
 - [ ] Given пары участников
 
 - [ ] When участники именуют сценарии, выполняют команды и анализируют их вывод и поведение
-- Сценарий "Как ...?"
+- Сценарий "Как посмотреть список образов на хосте?"
 ```shell
 docker image ls # TODO: собственные пометки участников для будущего использования в проектах
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как скачать образ из репозитория?"
 ```shell
 docker image pull alpine
 docker image ls
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как посмотреть слои образа?"
 ```shell
 docker image history alpine
 
 docker image inspect alpine
-docker image inspect --format='{{.Id}} -> {{.Parent}}' alpine
+docker image inspect --format={{.Id}} -> {{.Parent}}' alpine // нужны двойные кавычки на Windows
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как запустить контейнер, посмотреть изменения и зафиксировать изменения(создать новый образ на основе базового + слои с изменениями)?"
 ```shell
 docker container run --name demo -it alpine
 /# touch side-effect.txt
@@ -271,7 +271,7 @@ docker container commit demo {{ registry-account }}/demo
 docker image ls
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как создать образ с новым именем(переименования нет)?"
 ```shell
 docker image tag {{ registry-account }}/demo:latest {{ registry-account }}/demo:1.0.0
 docker image ls
